@@ -46,14 +46,29 @@ public class StudentEnrolment {
         }
     }
     public void update_student(Student student) {
-      //  if (course.getStudents().contains(student)) {
-            student.setStudentId("S002");
-        //}
+        if (course.getStudents().contains(student)) {
+            student.setStudentId("S003");
+            student.setStudentName("Nam");
+            student.setBirthdate("02/02/2002");
+        }
     }
 
     public void delete_student(Student student){
         if (course.getStudents().contains(student)) {
             course.getStudents().remove(student);
+            System.out.println("Delete successfully");
+        }
+    }
+    public void getOne(Student student, Course course){
+        if (course.getStudents().contains(student)) {
+            System.out.println(student.toString());
+        }
+    }
+    public void getAll(){
+        if (course.getStudents().contains(student)){
+            for (Student studentss: students){
+                System.out.println(studentss);
+            }
         }
     }
 }
