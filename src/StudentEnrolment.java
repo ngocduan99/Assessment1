@@ -4,7 +4,7 @@ public class StudentEnrolment {
     protected Student student;
     protected Course course;
     protected String semester;
-    private ArrayList<Student> students;
+
 
     public StudentEnrolment(Student student, Course course, String semester) {
         this.student = student;
@@ -61,14 +61,13 @@ public class StudentEnrolment {
     }
     public void getOne(Student student, Course course){
         if (course.getStudents().contains(student)) {
-            System.out.println(student.toString());
+            System.out.println(student);
         }
     }
-    public void getAll(){
-        if (course.getStudents().contains(student)){
-            for (Student studentss: students){
-                System.out.println(studentss);
-            }
+    public void getAll(Course course){
+        for (Student studentz: course.getStudents()){
+            System.out.println(studentz);
         }
     }
+
 }

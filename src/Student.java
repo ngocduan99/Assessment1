@@ -5,12 +5,17 @@ public class Student{
     private String studentId;
     private String studentName;
     private String birthdate;
-
+    private ArrayList<Course> courses;
 
     public Student(String studentId, String studentName, String birthdate) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.birthdate = birthdate;
+        this.courses = new ArrayList<Course>();
+    }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
     }
 
     public String getStudentId() {

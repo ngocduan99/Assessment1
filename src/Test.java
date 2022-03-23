@@ -8,9 +8,7 @@ public class Test {
         s2.add_student(student1,course1);
         s2.add_student(student2,course1);
         s2.update_student(student2);
-        s2.delete_student(student1);
-        s2.getOne(student2,course1);
         s2.getOne(student1,course1);
-        s2.getAll();
+        s2.getAll(course1);
     }
 }
