@@ -4,14 +4,15 @@ import java.util.Date;
 public class Student{
     private String studentId;
     private String studentName;
-    private String birthdate;
+    private String birthDate;
     private ArrayList<Course> courses;
 
-    public Student(String studentId, String studentName, String birthdate) {
+    public Student(String studentId, String studentName, String birthDate) {
         this.studentId = studentId;
         this.studentName = studentName;
-        this.birthdate = birthdate;
+        this.birthDate = birthDate;
         this.courses = new ArrayList<Course>();
+
     }
 
     public ArrayList<Course> getCourses() {
@@ -26,8 +27,8 @@ public class Student{
         return studentName;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getBirthDate() {
+        return birthDate;
     }
 
     public void setStudentId(String studentId) {
@@ -38,8 +39,8 @@ public class Student{
         this.studentName = studentName;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthdate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class Student{
         return "Student{" +
                 "studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
-                ", birthdate='" + birthdate + '\'' +
+                ", birthDate='" + birthDate + '\'' +
                 '}';
     }
 }

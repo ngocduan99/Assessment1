@@ -1,14 +1,32 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Test {
-    public static void main (String args[]){
-        Student student1 = new Student("S001","Khang","01/01/2000");
-        Student student2 = new Student("S002","Dat","26/07/2002");
-        Course course1 = new Course("M992","DDD",12);
-        Course course2 = new Course("M993","MMM",12);
-        StudentEnrolment s2 = new StudentEnrolment(student1,course1,"SSS");
-        s2.add_student(student1,course1);
-        s2.add_student(student2,course1);
-        s2.update_student(student2);
-        s2.getOne(student1,course1);
-        s2.getAll(course1);
+    public static void main(String[] args) {
+        Course course1 = new Course("M002","Further Programming",12);
+        Student student = new Student("S002","Duan","01212");
+        Student s2 = new Student("s12345","Nguyen Van A","12/12/1212");
+        StudentEnrolment se = new StudentEnrolment();
+
+        se.print_student(student,course1);
+        se.print_student(s2,course1);
+        System.out.println(course1.getStudentsList());
     }
 }
+
+//    public static void enrol_student() {
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Please enter student ID:");
+//        String sID = sc.nextLine();
+//        System.out.println("Please enter student name:");
+//        String sName = sc.nextLine();
+//        System.out.println("Please enter student birthday:");
+//        String sDoB = sc.nextLine();
+//        Student student = new Student(sID, sName, sDoB);
+//        System.out.println(student);
+//
+//        Course course1 = new Course("M992", "DDD", 12);
+//        Course course2 = new Course("M993", "MMM", 12);
+//        StudentEnrolment s = new StudentEnrolment();
+//    }
+//}

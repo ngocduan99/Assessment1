@@ -4,16 +4,16 @@ public class Course {
     private String courseID;
     private String courseName;
     private int credits;
-    private ArrayList<Student> students;
+    private ArrayList<Student> studentsList;
     public Course(String courseID, String courseName, int credits) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.credits = credits;
-        this.students = new ArrayList<Student>();
+        this.studentsList = new ArrayList<Student>();
     }
 
-    public ArrayList<Student> getStudents() {
-        return students;
+    public ArrayList<Student> getStudentsList() {
+        return studentsList;
     }
 
     public String getCourseID() {

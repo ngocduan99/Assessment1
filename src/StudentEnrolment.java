@@ -1,16 +1,22 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.SplittableRandom;
 
 public class StudentEnrolment {
-    protected Student student;
-    protected Course course;
-    protected String semester;
+    private Student student;
+    private Course course;
+    private String semester;
 
+
+    public StudentEnrolment() {
+    }
 
     public StudentEnrolment(Student student, Course course, String semester) {
         this.student = student;
         this.course = course;
         this.semester = semester;
     }
+
 
     public Student getStudent() {
         return student;
@@ -36,17 +42,20 @@ public class StudentEnrolment {
         this.semester = semester;
     }
 
-    public void add_student(Student student, Course course){
-        if (course.getStudents().contains(student)){
-            System.out.println("Already in course");
-        }
-        else {
-            course.getStudents().add(student);
-            System.out.println("Available");
-        }
+//add_student function
+    public boolean print_student (Student student,Course course) {
+        if (course.getStudentsList().contains(student)){
+            return false;
     }
+        else {
+            course.getStudentsList().add(student);
+            return true;
+        }
+
+    }
+
     public void update_student(Student student) {
-        if (course.getStudents().contains(student)) {
+        if (course.getStudentsList().contains(student)) {
             student.setStudentId("S003");
             student.setStudentName("Nam");
             student.setBirthdate("02/02/2002");
@@ -54,18 +63,18 @@ public class StudentEnrolment {
     }
 
     public void delete_student(Student student){
-        if (course.getStudents().contains(student)) {
-            course.getStudents().remove(student);
+        if (course.getStudentsList().contains(student)) {
+            course.getStudentsList().remove(student);
             System.out.println("Delete successfully");
         }
     }
     public void getOne(Student student, Course course){
-        if (course.getStudents().contains(student)) {
+        if (course.getStudentsList().contains(student)) {
             System.out.println(student);
         }
     }
     public void getAll(Course course){
-        for (Student studentz: course.getStudents()){
+        for (Student studentz: course.getStudentsList()){
             System.out.println(studentz);
         }
     }
