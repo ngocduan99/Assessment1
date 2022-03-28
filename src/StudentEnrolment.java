@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.SplittableRandom;
 
@@ -43,16 +44,24 @@ public class StudentEnrolment {
     }
 
 //add_student function
-    public boolean print_student (Student student,Course course) {
+    public boolean add_student (Student student,Course course) {
+        HashMap<Course, Student> enrolment = new HashMap<>();
         if (course.getStudentsList().contains(student)){
+            System.out.println("Not available");
             return false;
+
     }
         else {
             course.getStudentsList().add(student);
+            enrolment.put(course,student);
+            System.out.println(enrolment);
             return true;
-        }
 
+        }
     }
+
+
+
 
     public void update_student(Student student) {
         if (course.getStudentsList().contains(student)) {

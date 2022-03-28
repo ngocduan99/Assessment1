@@ -3,16 +3,18 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        Course course1 = new Course("M002","Further Programming",12);
-        Student student = new Student("S002","Duan","01212");
-        Student s2 = new Student("s12345","Nguyen Van A","12/12/1212");
-        StudentEnrolment se = new StudentEnrolment();
+        Course course1 = new Course("M002", "Further Programming", 12);
+        Course course2 = new Course("M003", "User Interface Design", 24);
+        Student s1 = new Student("S002", "Duan", "01212");
+        Student s2 = new Student("s12345", "Nguyen Van A", "12/12/1212");
+        StudentEnrolment se1 = new StudentEnrolment();
 
-        se.print_student(student,course1);
-        se.print_student(s2,course1);
-        System.out.println(course1.getStudentsList());
+        se1.add_student(s1,course1);
+        se1.add_student(s1,course1);
+        se1.add_student(s1,course2);
     }
 }
+
 
 //    public static void enrol_student() {
 //        Scanner sc = new Scanner(System.in);

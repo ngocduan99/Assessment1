@@ -5,18 +5,18 @@ public class Student{
     private String studentId;
     private String studentName;
     private String birthDate;
-    private ArrayList<Course> courses;
+    private ArrayList<Course> coursesLists;
 
     public Student(String studentId, String studentName, String birthDate) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.birthDate = birthDate;
-        this.courses = new ArrayList<Course>();
+        this.coursesLists = new ArrayList<Course>();
 
     }
 
     public ArrayList<Course> getCourses() {
-        return courses;
+        return coursesLists;
     }
 
     public String getStudentId() {
