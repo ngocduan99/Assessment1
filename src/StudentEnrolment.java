@@ -47,7 +47,7 @@ public class StudentEnrolment {
     public boolean add_student (Student student,Course course) {
         HashMap<Course, Student> enrolment = new HashMap<>();
         if (course.getStudentsList().contains(student)){
-            System.out.println("Not available");
+            System.out.println("Not Available");
             return false;
 
     }
