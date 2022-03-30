@@ -7,11 +7,16 @@ public class Test {
         Course course2 = new Course("M003", "User Interface Design", 24);
         Student s1 = new Student("S002", "Duan", "01212");
         Student s2 = new Student("s12345", "Nguyen Van A", "12/12/1212");
-        StudentEnrolment se1 = new StudentEnrolment();
+        StudentEnrolment se = new StudentEnrolment();
 
-        se1.add_student(s1,course1);
-        se1.add_student(s1,course1);
-        se1.add_student(s1,course2);
+        se.add_student(s1,course1);
+        se.add_course(course1,s1);
+        se.add_courselist(course1);
+        se.add_courselist(course2);
+        se.add_semester("A/2021");
+        se.getCourseListInSem("A/2021",course1);
+//        se.enrolments(s1,course1,"Sem 2/2021");
+
     }
 }
 

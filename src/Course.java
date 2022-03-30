@@ -4,21 +4,20 @@ public class Course {
     private String courseID;
     private String courseName;
     private int credits;
-    private ArrayList<Student> studentsList;
+    private ArrayList<Student> studentList;
+
     public Course(String courseID, String courseName, int credits) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.credits = credits;
-        this.studentsList = new ArrayList<Student>();
+        this.studentList = new ArrayList<Student>();
     }
 
-    public ArrayList<Student> getStudentsList() {
-        return studentsList;
+    public ArrayList<Student> getStudentList() {
+        return studentList;
     }
 
-    public String getCourseID() {
-        return courseID;
-    }
+    public String getCourseID() { return courseID; }
 
     public String getCourseName() {
         return courseName;
