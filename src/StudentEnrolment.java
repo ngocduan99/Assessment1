@@ -101,11 +101,9 @@ public class StudentEnrolment {
 //        }
         for(Course couTemp : coursesLists)
             if(couTemp.equals(course)){
-                System.out.println("Huhu");
                 return false;
             }
             coursesLists.add(course);
-            System.out.println("hahu");
             return true;
     }
 
@@ -116,7 +114,6 @@ public class StudentEnrolment {
 
             semesterList.add(semester);
             ArrayList<Course> courseLists = new ArrayList<>();
-            System.out.println("hauahau");
             courseListInSem.put(semester,courseLists);
             return true;
 
@@ -128,20 +125,14 @@ public class StudentEnrolment {
                 ArrayList<Course> couTemp = courseListInSem.get(semester);
                 for (Course couTemp2 : couTemp)
                 if(couTemp2.equals(course)){
-                    System.out.println("Huhu");
                     return courseListInSem;
                 }
                     couTemp.add(course);
                     courseListInSem.put(semester, couTemp);
-                    System.out.println("LOlo");
                     return courseListInSem;
-
             }
-            System.out.println("Hhiih");
             return courseListInSem;
         }
-        System.out.println("Hoooho");
-
         return courseListInSem;
     }
 
@@ -153,7 +144,7 @@ public class StudentEnrolment {
             HashMap<String,String> enrolData = enrolmentList.get(semester); //Hashmap(newCourse (Key), newStudent (Value))
             String enrolInfo = enrolData.get(newCourse);
             if(enrolData.containsKey(newCourse) && enrolInfo.contains(newStudent)){
-                System.out.println("Already enrol");
+
 
             }
         }
