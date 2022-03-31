@@ -10,14 +10,13 @@ public class StudentEnrolment {
     private ArrayList<String> semesterList;
     private ArrayList<Student> studentsLists;
     private HashMap<String, ArrayList> courseListInSem;
-    private HashMap<Course, ArrayList> studentListInCourse;
+
 
     public StudentEnrolment() {
         this.coursesLists = new ArrayList<>();
         this.semesterList = new ArrayList<>();
         this.courseListInSem = new HashMap<>();
         this.studentsLists = new ArrayList<>();
-        this.studentListInCourse = new HashMap<>();
         this.enrolmentList = new HashMap<>();
     }
 
@@ -29,7 +28,6 @@ public class StudentEnrolment {
         this.enrolmentList = new HashMap<>();
         this.semesterList = new ArrayList<String>();
         this.courseListInSem = new HashMap<>();
-        this.studentListInCourse = new HashMap<>();
         this.coursesLists = new ArrayList<Course>();
     }
 
