@@ -9,11 +9,11 @@ public class StudentEnrolment {
     private Course course;
     private String semester;
     private ArrayList<Course> coursesLists;
-    private HashMap<String,HashMap> enrolmentList; //String here is semester, Hashmap here is another hashmap(String newCourse, String newStudent)
+    private HashMap<String, HashMap> enrolmentList;
     private ArrayList<String> semesterList;
     private ArrayList<Student> studentsLists;
-    private HashMap<String,ArrayList> courseListInSem;
-    private HashMap<Course,ArrayList> studentListInCourse;
+    private HashMap<String, ArrayList> courseListInSem;
+    private HashMap<Course, ArrayList> studentListInCourse;
 
     public StudentEnrolment() {
         this.coursesLists = new ArrayList<>();
@@ -23,7 +23,6 @@ public class StudentEnrolment {
         this.studentListInCourse = new HashMap<>();
         this.enrolmentList = new HashMap<>();
     }
-
 
 
     public StudentEnrolment(Student student, Course course, String semester) {
@@ -37,6 +36,10 @@ public class StudentEnrolment {
         this.coursesLists = new ArrayList<Course>();
     }
 
+    public HashMap<String, ArrayList> getCourseListInSem() {
+        return courseListInSem;
+    }
+
     public ArrayList<Student> getStudentsLists() {
         return studentsLists;
     }
@@ -48,6 +51,7 @@ public class StudentEnrolment {
     public Student getStudent() {
         return student;
     }
+
     public ArrayList<Course> getCoursesLists() {
         return coursesLists;
     }
@@ -76,94 +80,73 @@ public class StudentEnrolment {
         this.semesterList = semesterList;
     }
 
-    //add_student function
-    public boolean add_student (Student student,Course course) {
-        if (course.getStudentList().contains(student)){
-            return false;
-    }
-        else {
-            course.getStudentList().add(student);
-            return true;
-        }
-    }
-
-    //add_course function
-    public boolean add_course (Course course,Student student) {
-        if(student.getCourseList().contains(course)){
-            return false;
-        }
-        else{
-            student.getCourseList().add(course);
-            return true;
-        }
-    }
 
     //add course to course list
-    public boolean add_courselist (Course course){
-        for(Course couTemp : coursesLists)
-            if(couTemp.equals(course)){
+    public boolean add_courselist(Course course) {
+        for (Course couTemp : coursesLists)
+            if (couTemp.equals(course)) {
                 return false;
             }
-            coursesLists.add(course);
-            return true;
+        coursesLists.add(course);
+        return true;
     }
 
     //add student to student list
-    public boolean add_studentList (Student student) {
+    public boolean add_studentList(Student student) {
         for (Student stuTemp : studentsLists)
             if (stuTemp.equals(student)) {
                 return false;
             }
-            studentsLists.add(student);
-            return true;
+        studentsLists.add(student);
+        return true;
     }
 
     //input info of student
-    public boolean input_student (String id, String name, String birthdate){
+    public boolean input_student(String id, String name, String birthdate) {
         for (Student stuTemp : studentsLists)
-            if(stuTemp.getStudentId().equals(id)){
+            if (stuTemp.getStudentId().equals(id)) {
                 return false;
             }
-            Student stu = new Student(id, name, birthdate);
-            studentsLists.add(stu);
-            return true;
+        Student stu = new Student(id, name, birthdate);
+        studentsLists.add(stu);
+        return true;
     }
 
     //input info of course
-    public boolean input_course (String id, String name, String credits){
-        for (Course couTemp: coursesLists)
-            if(couTemp.getCourseID().equals(id)){
+    public boolean input_course(String id, String name, String credits) {
+        for (Course couTemp : coursesLists)
+            if (couTemp.getCourseID().equals(id)) {
                 return false;
             }
-            Course cou = new Course(id,name,Integer.parseInt(credits));
-            coursesLists.add(cou);
-            return true;
+        Course cou = new Course(id, name, Integer.parseInt(credits));
+        coursesLists.add(cou);
+        return true;
     }
 
     // add semester to semester list
-    public boolean add_semester (String semester){
-        if(semesterList.contains(semester)){
+    public boolean add_semester(String semester) {
+        if (semesterList.contains(semester)) {
             return false;
         }
-            semesterList.add(semester);
-            ArrayList<Course> courseLists = new ArrayList<>();
-            courseListInSem.put(semester,courseLists);
-            return true;
+        semesterList.add(semester);
+        ArrayList<Course> courseLists = new ArrayList<>();
+        courseListInSem.put(semester, courseLists);
+        return true;
     }
 
 
     //Add courses list in one semester
     public HashMap<String, ArrayList> getCourseListInSem(String semester, Course course) {
-        if(courseListInSem.containsKey(semester)){
-            if(coursesLists.contains(course)){
+        if (courseListInSem.containsKey(semester)) {
+            if (coursesLists.contains(course)) {
                 ArrayList<Course> couTemp = courseListInSem.get(semester);
                 for (Course couTemp2 : couTemp)
-                if(couTemp2.equals(course)){
-                    return courseListInSem;
-                }
-                    couTemp.add(course);
-                    courseListInSem.put(semester, couTemp);
-                    return courseListInSem;
+                    if (couTemp2.equals(course)) {
+                        return courseListInSem;
+                    }
+                couTemp.add(course);
+                courseListInSem.put(semester, couTemp);
+                return courseListInSem;
             }
             return courseListInSem;
         }
@@ -171,11 +154,10 @@ public class StudentEnrolment {
     }
 
     //enrolment system
-    public String enrolments (String studentId,String courseId,String semester) {
+    public String enrolments(String studentId, String courseId, String semester) {
         String alarmMess = "";
         String studentInfor = "";
         String courseInfor = "";
-        String totalData = "";
 
         for (Student i : studentsLists) {
             if (i.getStudentId().equals(studentId)) {
@@ -194,38 +176,35 @@ public class StudentEnrolment {
             alarmMess += "course ID not exist";
             return alarmMess;
         }
-        totalData = studentInfor + " and " + courseInfor;
-        return totalData;
 
+        if (enrolmentList.containsKey(semester)) {
+            HashMap<String, String> enrolData = enrolmentList.get(semester); //Hashmap(studentInfo (Key), courseInfo (Value))
+            String enrolInfo = enrolData.get(studentInfor);
+            if (enrolData.containsKey(studentInfor) && enrolInfo.contains(courseInfor)) {
+                return "Already enrol before";
+            }
+            else
+                if (enrolData.containsKey(studentInfor)) {
+                String enrolValue = enrolInfo + "\'" + courseInfor; //Plus another course if student enrol more
+
+                enrolData.put(studentInfor, enrolValue);
+                enrolmentList.put(semester, enrolData);
+                System.out.println(enrolmentList);
+                return "Enrol successfully";
+            }
+        }
+        else {
+            HashMap<String, String> newEnrolData = new HashMap<>();
+            newEnrolData.put(studentInfor, courseInfor);
+            enrolmentList.put(semester, newEnrolData);
+            System.out.println(enrolmentList);
+            return "Enrol successfully";
+        }
+        return "Error";
     }
 
 
 
-
-
-
-//        String newStudent = student.getStudentId() + student.getStudentName() + student.getBirthDate();
-//        String newCourse = course.getCourseID() + course.getCourseName();
-//        if(enrolmentList.containsKey(semester)){
-//            HashMap<String,String> enrolData = enrolmentList.get(semester); //Hashmap(newCourse (Key), newStudent (Value))
-//            String enrolInfo = enrolData.get(newCourse);
-//            if(enrolData.containsKey(newCourse) && enrolInfo.contains(newStudent)){
-//                return "Haha";
-//            }
-//            else if (enrolData.containsKey(newCourse)){
-//                String enrolValue = enrolInfo + newCourse;
-//                enrolData.put(newCourse,enrolValue);
-//                enrolmentList.put(semester,enrolData);
-//                return "Hihi";
-//            }
-//        }
-//        else {
-//            HashMap<String,String> newEnrolData = new HashMap<>();
-//            newEnrolData.put(newCourse,newStudent);
-//            enrolmentList.put(semester,newEnrolData);
-//            return "Hihi";
-//        }
-//        return "Hehe";
 
 
 
