@@ -153,7 +153,7 @@ public class StudentEnrolment {
         return courseListInSem;
     }
 
-    //enrolment system
+    //Enrolment + update system
     public String enrolments(String studentId, String courseId, String semester) {
         String alarmMess = "";
         String studentInfor = "";
@@ -180,53 +180,88 @@ public class StudentEnrolment {
         if (enrolmentList.containsKey(semester)) {
             HashMap<String, String> enrolData = enrolmentList.get(semester); //Hashmap(studentInfo (Key), courseInfo (Value))
             String enrolInfo = enrolData.get(studentInfor);
+            //if data have both student info and course info
             if (enrolData.containsKey(studentInfor) && enrolInfo.contains(courseInfor)) {
                 return "Already enrol before";
             }
-            else
-                if (enrolData.containsKey(studentInfor)) {
+            //If data have student info but they need update more course
+            else if (enrolData.containsKey(studentInfor)) {
                 String enrolInfo2 = enrolInfo + "\'" + courseInfor; //Plus another course if student enrol more
 
                 enrolData.put(studentInfor, enrolInfo2);
                 enrolmentList.put(semester, enrolData);
                 System.out.println(enrolmentList);
-                return "Enrol successfully";
+                return "Enrol more successfully";
+            }
+            //If data have student info but no any course info
+            else {
+                enrolData.put(studentInfor,courseInfor);
+                enrolmentList.put(semester,enrolData);
+                System.out.println(enrolmentList);
+                return "Enrol new course success";
             }
         }
+        // If data dont have any student, course exists
         else {
-            HashMap<String, String> newEnrolData = new HashMap<>();
+            HashMap<String, String> newEnrolData = new HashMap<String,String>();
             newEnrolData.put(studentInfor, courseInfor);
             enrolmentList.put(semester, newEnrolData);
             System.out.println(enrolmentList);
-            return "Enrol successfully";
-        }
-        return "Error";
-    }
-
-
-
-
-
-
-    public void update_student(Student student) {
-        if (course.getStudentList().contains(student)) {
-            student.setStudentId("S003");
-            student.setStudentName("Nam");
-            student.setBirthdate("02/02/2002");
+            return "Enrol new semeter successfully";
         }
     }
 
-    public void delete_student(Student student){
-        if (course.getStudentList().contains(student)) {
-            course.getStudentList().remove(student);
-            System.out.println("Delete successfully");
+
+    // Delete/drop any course by student
+    public String drop_course (String studentId, String courseId, String semester){
+        String alarmMess = "";
+        String studentInfor = "";
+        String courseInfor = "";
+
+        for (Student i : studentsLists) {
+            if (i.getStudentId().equals(studentId)) {
+                studentInfor = i.toString();
+            }
+        }
+        if (studentInfor.equals("")) {
+            alarmMess = "student ID not exist";
+        }
+        for (Course i : coursesLists) {
+            if (i.getCourseID().equals(courseId)) {
+                courseInfor = i.toString();
+            }
+        }
+        if (courseInfor.equals("")) {
+            alarmMess += "course ID not exist";
+            return alarmMess;
+        }
+
+        if(enrolmentList.containsKey(semester)){
+            HashMap<String, String> enrolData = enrolmentList.get(semester);
+            if(enrolData.get(studentInfor).contains(courseInfor)){
+                String newData = enrolData.get(studentInfor).replace(courseInfor,"");
+                enrolData.put(studentInfor,newData);
+                System.out.println(enrolmentList);
+                return "Delete successfully";
+            }
+            else{
+                alarmMess = "Input wrong course";
+                return  alarmMess;
+            }
+        }
+        else{
+            alarmMess = "Can not find this semester";
+            return alarmMess;
         }
     }
-    public void getOne(Student student, Course course){
-        if (course.getStudentList().contains(student)) {
-            System.out.println(student);
-        }
-    }
+
+    // Print all courses for 1 student in semester
+//    public String get_one(String studentId, String courseId, String semester){
+//
+//    }
+
+
+
     public void getAll(Course course){
         for (Student studentz: course.getStudentList()){
             System.out.println(studentz);

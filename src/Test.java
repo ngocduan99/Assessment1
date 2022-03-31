@@ -41,12 +41,19 @@ public class Test {
 //
 //        System.out.println(se.getCoursesLists());
 
-//        System.out.println(se.enrolments("S003","M002","A/2021"));
+        System.out.println(se.enrolments("S003","M002","A/2021"));
 //        System.out.println(se.enrolments("S003","M003","A/2021"));
-        System.out.println(se.enrolments("S004","M005","A/2021"));
+//        System.out.println(se.enrolments("S004","M002","A/2021"));
+
+        //Enrol 2 diffirent student
         System.out.println(se.enrolments("S004","M003","A/2021"));
 
+//        System.out.println(se.enrolments("S003","M003","A/2021"));
 
+        //Drop course
+
+        System.out.println(se.drop_course("S003","M003","A/2021"));
+        System.out.println(se.drop_course("S003","M002","A/2021"));
     }
 }
 
