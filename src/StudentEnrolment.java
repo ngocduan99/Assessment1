@@ -185,9 +185,9 @@ public class StudentEnrolment {
             }
             else
                 if (enrolData.containsKey(studentInfor)) {
-                String enrolValue = enrolInfo + "\'" + courseInfor; //Plus another course if student enrol more
+                String enrolInfo2 = enrolInfo + "\'" + courseInfor; //Plus another course if student enrol more
 
-                enrolData.put(studentInfor, enrolValue);
+                enrolData.put(studentInfor, enrolInfo2);
                 enrolmentList.put(semester, enrolData);
                 System.out.println(enrolmentList);
                 return "Enrol successfully";
