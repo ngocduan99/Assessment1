@@ -1,8 +1,5 @@
 import javax.print.DocFlavor;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.SplittableRandom;
+import java.util.*;
 
 public class StudentEnrolment {
     private Student student;
@@ -135,24 +132,6 @@ public class StudentEnrolment {
     }
 
 
-    //Add courses list in one semester
-    public HashMap<String, ArrayList> getCourseListInSem(String semester, Course course) {
-        if (courseListInSem.containsKey(semester)) {
-            if (coursesLists.contains(course)) {
-                ArrayList<Course> couTemp = courseListInSem.get(semester);
-                for (Course couTemp2 : couTemp)
-                    if (couTemp2.equals(course)) {
-                        return courseListInSem;
-                    }
-                couTemp.add(course);
-                courseListInSem.put(semester, couTemp);
-                return courseListInSem;
-            }
-            return courseListInSem;
-        }
-        return courseListInSem;
-    }
-
     //Enrolment + update system
     public String enrolments(String studentId, String courseId, String semester) {
         String alarmMess = "";
@@ -195,15 +174,15 @@ public class StudentEnrolment {
             }
             //If data have student info but no any course info
             else {
-                enrolData.put(studentInfor,courseInfor);
-                enrolmentList.put(semester,enrolData);
+                enrolData.put(studentInfor, courseInfor);
+                enrolmentList.put(semester, enrolData);
                 System.out.println(enrolmentList);
                 return "Enrol new course success";
             }
         }
         // If data dont have any student, course exists
         else {
-            HashMap<String, String> newEnrolData = new HashMap<String,String>();
+            HashMap<String, String> newEnrolData = new HashMap<String, String>();
             newEnrolData.put(studentInfor, courseInfor);
             enrolmentList.put(semester, newEnrolData);
             System.out.println(enrolmentList);
@@ -213,7 +192,7 @@ public class StudentEnrolment {
 
 
     // Delete/drop any course by student
-    public String drop_course (String studentId, String courseId, String semester){
+    public String drop_course(String studentId, String courseId, String semester) {
         String alarmMess = "";
         String studentInfor = "";
         String courseInfor = "";
@@ -236,36 +215,99 @@ public class StudentEnrolment {
             return alarmMess;
         }
 
-        if(enrolmentList.containsKey(semester)){
+        if (enrolmentList.containsKey(semester)) {
             HashMap<String, String> enrolData = enrolmentList.get(semester);
-            if(enrolData.get(studentInfor).contains(courseInfor)){
-                String newData = enrolData.get(studentInfor).replace(courseInfor,"");
-                enrolData.put(studentInfor,newData);
+            if (enrolData.get(studentInfor).contains(courseInfor)) {
+                String newData = enrolData.get(studentInfor).replace(courseInfor, "");
+                enrolData.put(studentInfor, newData);
                 System.out.println(enrolmentList);
                 return "Delete successfully";
-            }
-            else{
+            } else {
                 alarmMess = "Input wrong course";
-                return  alarmMess;
+                return alarmMess;
             }
-        }
-        else{
+        } else {
             alarmMess = "Can not find this semester";
             return alarmMess;
         }
     }
 
     // Print all courses for 1 student in semester
-//    public String get_one(String studentId, String courseId, String semester){
-//
-//    }
+    public String get_all_course(String studentId, String semester) {
+        String alarmMess = "";
+        String studentInfor = "";
 
-
-
-    public void getAll(Course course){
-        for (Student studentz: course.getStudentList()){
-            System.out.println(studentz);
+        for (Student i : studentsLists) {
+            if (i.getStudentId().equals(studentId)) {
+                studentInfor = i.toString();
+            }
         }
+        if (studentInfor.equals("")) {
+            alarmMess = "student ID not exist";
+            return alarmMess;
+        }
+
+        if (enrolmentList.containsKey(semester)) {
+            HashMap<String, String> enrolData = enrolmentList.get(semester);
+            if (enrolData.containsKey(studentInfor)) {
+                for (String i : enrolData.keySet()) {
+                    System.out.println("Course: " + "\'" + enrolData.get(i) + "in semester:" + "" + semester);
+                    return "Done";
+                }
+            } else {
+                alarmMess = "Can not find the studentId";
+                return alarmMess;
+            }
+        } else {
+            alarmMess = "Can not find the semester";
+            return alarmMess;
+        }
+        return "End";
     }
 
+    //get all student in one course
+    public String get_all_student(String courseId, String semester) {
+        String alarmMess = "";
+        String courseInfor = "";
+        for (Course i : coursesLists) {
+            if (i.getCourseID().equals(courseId)) {
+                courseInfor = i.toString();
+            }
+        }
+        if (courseInfor.equals("")) {
+            alarmMess = "course ID not exist";
+            return alarmMess;
+        }
+        if (enrolmentList.containsKey(semester)) {
+            HashMap<String, String> enrolData = enrolmentList.get(semester);
+            for (String i : enrolData.keySet()) {
+                if (enrolData.get(i).contains(courseId)) {
+                    System.out.println("Student:" + i);
+                } else {
+                    alarmMess = "Can not find the match course ID";
+                    return alarmMess;
+                }
+            }
+        } else {
+            alarmMess = "Can not find the semester";
+            return alarmMess;
+        }
+        return "End";
+    }
+
+    //Print all course in semester
+    public String courseInSem (String semester) {
+        String alarmMess = "";
+        String courseInfor = "";
+
+
+        if(enrolmentList.containsKey(semester)){
+            HashMap<String,String> enrolData = enrolmentList.get(semester);
+            for(String i: enrolData.values()){
+                courseInfor = i;
+            }
+        }
+        return courseInfor;
+    }
 }
+

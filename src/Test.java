@@ -30,8 +30,8 @@ public class Test {
         se.add_semester("A/2021");
 
         //add_course into semester
-        se.getCourseListInSem("A/2021",course1);
-        se.getCourseListInSem("A/2021",course2);
+//        se.getCourseListInSem("A/2021",course1);
+//        se.getCourseListInSem("A/2021",course2);
 
         //Test result
 
@@ -41,19 +41,36 @@ public class Test {
 //
 //        System.out.println(se.getCoursesLists());
 
-        System.out.println(se.enrolments("S003","M002","A/2021"));
+        //Enrol more courses
+//        System.out.println(se.enrolments("S003","M002","A/2021"));
+//        System.out.println(se.enrolments("S003","M004","A/2021"));
 //        System.out.println(se.enrolments("S003","M003","A/2021"));
 //        System.out.println(se.enrolments("S004","M002","A/2021"));
 
         //Enrol 2 diffirent student
         System.out.println(se.enrolments("S004","M003","A/2021"));
 
-//        System.out.println(se.enrolments("S003","M003","A/2021"));
+        System.out.println(se.enrolments("S003","M003","A/2021"));
+
+        System.out.println(se.enrolments("S003","M004","A/2021"));
 
         //Drop course
 
-        System.out.println(se.drop_course("S003","M003","A/2021"));
-        System.out.println(se.drop_course("S003","M002","A/2021"));
+//        System.out.println(se.drop_course("S003","M003","A/2021"));
+//        System.out.println(se.drop_course("S003","M002","A/2021"));
+
+        //Get all course of one student in semester
+
+        System.out.println(se.get_all_course("S003","A/2021"));
+        System.out.println(se.get_all_course("S003","B/2021"));
+
+        //Get all student of one course in semester
+
+        System.out.println(se.get_all_student("M003","A/2021"));
+
+        //Get all course
+
+        System.out.println(se.courseInSem("A/2021"));
     }
 }
 
