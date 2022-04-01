@@ -299,15 +299,18 @@ public class StudentEnrolment {
     public String courseInSem (String semester) {
         String alarmMess = "";
         String courseInfor = "";
-
-
         if(enrolmentList.containsKey(semester)){
             HashMap<String,String> enrolData = enrolmentList.get(semester);
             for(String i: enrolData.values()){
                 courseInfor = i;
             }
         }
+        else {
+            alarmMess = "Can not find this semester";
+            return alarmMess;
+        }
         return courseInfor;
     }
+
 }
 
