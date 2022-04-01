@@ -12,11 +12,11 @@ public class Test {
 
 
         //input student
-        se.input_student("S003","Nam","02/02/2000");
-        se.input_student("S004","Son","03/03/2001");
+        se.input_student("S003", "Nam", "02/02/2000");
+        se.input_student("S004", "Son", "03/03/2001");
 
         //input course
-        se.input_course("M004","Further","12");
+        se.input_course("M004", "Further", "12");
 
         // add_student into list
         se.add_studentList(s1);
@@ -47,12 +47,12 @@ public class Test {
 //        System.out.println(se.enrolments("S003","M003","A/2021"));
 //        System.out.println(se.enrolments("S004","M002","A/2021"));
 
-        //Enrol 2 diffirent student
-        System.out.println(se.enrolments("S004","M003","A/2021"));
+        //Enrol 2 different student
+        System.out.println(se.enrolments("S004", "M003", "A/2021"));
 
-        System.out.println(se.enrolments("S003","M003","A/2021"));
+        System.out.println(se.enrolments("S003", "M003", "A/2021"));
 
-        System.out.println(se.enrolments("S003","M004","A/2021"));
+        System.out.println(se.enrolments("S003", "M004", "A/2021"));
 
         //Drop course
 
@@ -61,33 +61,15 @@ public class Test {
 
         //Get all course of one student in semester
 
-        System.out.println(se.get_all_course("S003","A/2021"));
-        System.out.println(se.get_all_course("S003","B/2021"));
+        System.out.println(se.get_all_course("S003", "A/2021"));
+        System.out.println(se.get_all_course("S003", "B/2021"));
 
         //Get all student of one course in semester
 
-        System.out.println(se.get_all_student("M003","A/2021"));
+        System.out.println(se.get_all_student("M003", "A/2021"));
 
         //Get all course
 
         System.out.println(se.courseInSem("A/2021"));
     }
 }
-
-
-//    public static void enrol_student() {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Please enter student ID:");
-//        String sID = sc.nextLine();
-//        System.out.println("Please enter student name:");
-//        String sName = sc.nextLine();
-//        System.out.println("Please enter student birthday:");
-//        String sDoB = sc.nextLine();
-//        Student student = new Student(sID, sName, sDoB);
-//        System.out.println(student);
-//
-//        Course course1 = new Course("M992", "DDD", 12);
-//        Course course2 = new Course("M993", "MMM", 12);
-//        StudentEnrolment s = new StudentEnrolment();
-//    }
-//}

@@ -100,6 +100,7 @@ public class StudentEnrolment {
     public boolean input_student(String id, String name, String birthdate) {
         for (Student stuTemp : studentsLists)
             if (stuTemp.getStudentId().equals(id)) {
+                System.out.println("This student ID is already exist");
                 return false;
             }
         Student stu = new Student(id, name, birthdate);
@@ -114,6 +115,7 @@ public class StudentEnrolment {
                 return false;
             }
         Course cou = new Course(id, name, Integer.parseInt(credits));
+        System.out.println(cou);
         coursesLists.add(cou);
         return true;
     }
