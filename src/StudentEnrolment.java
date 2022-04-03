@@ -90,6 +90,7 @@ public class StudentEnrolment {
     public boolean add_studentList(Student student) {
         for (Student stuTemp : studentsLists)
             if (stuTemp.equals(student)) {
+                System.out.println("Error");
                 return false;
             }
         studentsLists.add(student);
@@ -135,6 +136,7 @@ public class StudentEnrolment {
         String studentInfor = "";
         String courseInfor = "";
 
+        // Check if this student is already in the student lists
         for (Student i : studentsLists) {
             if (i.getStudentId().equals(studentId)) {
                 studentInfor = i.toString();
@@ -143,6 +145,8 @@ public class StudentEnrolment {
         if (studentInfor.equals("")) {
             alarmMess = "student ID not exist";
         }
+
+        // Check if this course is already in the course lists
         for (Course i : coursesLists) {
             if (i.getCourseID().equals(courseId)) {
                 courseInfor = i.toString();
@@ -153,6 +157,7 @@ public class StudentEnrolment {
             return alarmMess;
         }
 
+        //Main function
         if (enrolmentList.containsKey(semester)) {
             HashMap<String, String> enrolData = enrolmentList.get(semester); //Hashmap(studentInfo (Key), courseInfo (Value))
             String enrolInfo = enrolData.get(studentInfor);
@@ -194,6 +199,7 @@ public class StudentEnrolment {
         String studentInfor = "";
         String courseInfor = "";
 
+        // Check if this student is already in the student lists
         for (Student i : studentsLists) {
             if (i.getStudentId().equals(studentId)) {
                 studentInfor = i.toString();
@@ -202,6 +208,7 @@ public class StudentEnrolment {
         if (studentInfor.equals("")) {
             alarmMess = "student ID not exist";
         }
+        //Check if this course is already in the course lists
         for (Course i : coursesLists) {
             if (i.getCourseID().equals(courseId)) {
                 courseInfor = i.toString();
@@ -212,6 +219,7 @@ public class StudentEnrolment {
             return alarmMess;
         }
 
+        //Main function
         if (enrolmentList.containsKey(semester)) {
             HashMap<String, String> enrolData = enrolmentList.get(semester);
             if (enrolData.get(studentInfor).contains(courseInfor)) {
@@ -234,6 +242,7 @@ public class StudentEnrolment {
         String alarmMess = "";
         String studentInfor = "";
 
+        // Check if this student is already in the student lists
         for (Student i : studentsLists) {
             if (i.getStudentId().equals(studentId)) {
                 studentInfor = i.toString();
@@ -244,6 +253,7 @@ public class StudentEnrolment {
             return alarmMess;
         }
 
+        //Main function
         if (enrolmentList.containsKey(semester)) {
             HashMap<String, String> enrolData = enrolmentList.get(semester);
             if (enrolData.containsKey(studentInfor)) {
@@ -266,6 +276,8 @@ public class StudentEnrolment {
     public String get_all_student(String courseId, String semester) {
         String alarmMess = "";
         String courseInfor = "";
+
+        // Check if this course is already in the course lists
         for (Course i : coursesLists) {
             if (i.getCourseID().equals(courseId)) {
                 courseInfor = i.toString();
@@ -275,6 +287,8 @@ public class StudentEnrolment {
             alarmMess = "course ID not exist";
             return alarmMess;
         }
+
+        //Main function
         if (enrolmentList.containsKey(semester)) {
             HashMap<String, String> enrolData = enrolmentList.get(semester);
             for (String i : enrolData.keySet()) {
