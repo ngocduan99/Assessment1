@@ -98,14 +98,11 @@ public class StudentEnrolment {
 
     //input info of student
     public boolean input_student(String id, String name, String birthdate) {
-        for (Student stuTemp : studentsLists)
-            if (stuTemp.getStudentId().equals(id)) {
-                System.out.println("This student ID is already exist");
-                return false;
-            }
         Student stu = new Student(id, name, birthdate);
-        studentsLists.add(stu);
-        return true;
+//
+            studentsLists.add(stu);
+    System.out.println(stu);
+    return true;
     }
 
     //input info of course
@@ -311,6 +308,5 @@ public class StudentEnrolment {
         }
         return courseInfor;
     }
-
 }
 

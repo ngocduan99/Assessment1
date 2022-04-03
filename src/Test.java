@@ -50,17 +50,16 @@ public class Test {
         //Enrol 2 different student
         System.out.println(se.enrolments("S004", "M003", "A/2021"));
 
-<<<<<<< Updated upstream
+
         System.out.println(se.enrolments("S003", "M003", "A/2021"));
 
         System.out.println(se.enrolments("S003", "M004", "A/2021"));
-=======
         System.out.println(se.enrolments("S003","M003","A/2021"));
         System.out.println(se.enrolments("S003","M003","A/2021"));
 
         System.out.println(se.enrolments("S003","M004","A/2021"));
         System.out.println(se.enrolments("S004","M004","A/2021"));
->>>>>>> Stashed changes
+
 
         //Drop course
 

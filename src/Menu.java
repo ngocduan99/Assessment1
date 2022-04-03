@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StudentEnrolmentManage {
+public class Menu {
     public static void main(String[] args) {
 
         while (true) {
@@ -15,13 +15,13 @@ public class StudentEnrolmentManage {
             System.out.println("6 Print all courses in semester");
             System.out.println("7 sign out ");
 
-
+            StudentEnrolment se = new StudentEnrolment();
             Scanner sc = new Scanner(System.in);
             String lines = sc.nextLine();
             switch (lines) {
                 case "1":
                     System.out.println("Add a student");
-                    addStudent();
+                    addStudent(se,sc);
                     break;
                 case "2":
                     System.out.println("Print out all courses in sem");
@@ -43,23 +43,13 @@ public class StudentEnrolmentManage {
         }
     }
 
-    public static void addStudent() {
-        StudentEnrolment se = new StudentEnrolment();
-        Scanner sc = new Scanner(System.in);
+    public static void addStudent(StudentEnrolment se, Scanner sc) {
         System.out.println("Please enter student ID:");
         String sID = sc.nextLine();
         System.out.println("Please enter student name:");
         String sName = sc.nextLine();
         System.out.println("Please enter student birthday:");
         String sDoB = sc.nextLine();
-
-        for (Student stuTemp: se.getStudentsLists()){
-            if(stuTemp.getStudentId().equals(sID)){
-                System.out.println("Already here");
-            }
-            Student stu = new Student(sID, sName, sDoB);
-            System.out.println(stu);
-            se.getStudentsLists().add(stu);
-        }
+        se.input_student(sID,sName,sDoB);
     }
 }
