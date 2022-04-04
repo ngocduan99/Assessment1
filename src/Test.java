@@ -11,12 +11,12 @@ public class Test {
         StudentEnrolment se = new StudentEnrolment();
 
 
-        //input student
-        se.input_student("S003", "Nam", "02/02/2000");
-        se.input_student("S004", "Son", "03/03/2001");
+//        //input student
+//        se.input_student("S003", "Nam", "02/02/2000");
+//        se.input_student("S004", "Son", "03/03/2001");
 
-        //input course
-        se.input_course("M004", "Further", "12");
+//        //input course
+//        se.input_course("M004", "Further", "12");
 
         // add_student into list
         se.add_studentList(s1);

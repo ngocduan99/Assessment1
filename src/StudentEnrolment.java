@@ -78,8 +78,9 @@ public class StudentEnrolment {
 
     //add course to course list
     public boolean add_courselist(Course course) {
-        for (Course couTemp : coursesLists)
-            if (couTemp.equals(course)) {
+        for (Course cou : coursesLists)
+            if (cou.getCourseID().equals(course.getCourseID())) {
+                System.out.println("The course ID is already exists");
                 return false;
             }
         coursesLists.add(course);
@@ -88,35 +89,17 @@ public class StudentEnrolment {
 
     //add student to student list
     public boolean add_studentList(Student student) {
-        for (Student stuTemp : studentsLists)
-            if (stuTemp.equals(student)) {
-                System.out.println("Error");
+        for (Student stu : studentsLists){
+            if (stu.getStudentId().equals(student.getStudentId())) {
+                System.out.println("The student ID is already exists");
                 return false;
             }
+    }
+        System.out.println(student);
         studentsLists.add(student);
         return true;
     }
 
-    //input info of student
-    public boolean input_student(String id, String name, String birthdate) {
-        Student stu = new Student(id, name, birthdate);
-//
-            studentsLists.add(stu);
-    System.out.println(stu);
-    return true;
-    }
-
-    //input info of course
-    public boolean input_course(String id, String name, String credits) {
-        for (Course couTemp : coursesLists)
-            if (couTemp.getCourseID().equals(id)) {
-                return false;
-            }
-        Course cou = new Course(id, name, Integer.parseInt(credits));
-        System.out.println(cou);
-        coursesLists.add(cou);
-        return true;
-    }
 
     // add semester to semester list
     public boolean add_semester(String semester) {
@@ -182,7 +165,7 @@ public class StudentEnrolment {
                 return "Enrol new course success";
             }
         }
-        // If data dont have any student, course exists
+        // If data dont have any student, course
         else {
             HashMap<String, String> newEnrolData = new HashMap<String, String>();
             newEnrolData.put(studentInfor, courseInfor);
