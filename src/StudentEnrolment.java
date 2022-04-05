@@ -31,6 +31,7 @@ public class StudentEnrolment {
         this.coursesLists = new ArrayList<Course>();
     }
 
+    //Getter and Setter
     public HashMap<String, ArrayList> getCourseListInSem() {
         return courseListInSem;
     }
@@ -78,40 +79,62 @@ public class StudentEnrolment {
 
     //add course to course list
     public boolean add_courselist(Course course) {
-        for (Course cou : coursesLists)
+        for (Course cou : coursesLists) {
             if (cou.getCourseID().equals(course.getCourseID())) {
                 System.out.println("The course ID is already exists");
                 return false;
             }
+        }
+        System.out.println(course);
         coursesLists.add(course);
         return true;
     }
 
     //add student to student list
     public boolean add_studentList(Student student) {
-        for (Student stu : studentsLists){
+        for (Student stu : studentsLists) {
             if (stu.getStudentId().equals(student.getStudentId())) {
                 System.out.println("The student ID is already exists");
                 return false;
             }
-    }
+        }
         System.out.println(student);
         studentsLists.add(student);
         return true;
     }
 
-
-    // add semester to semester list
-    public boolean add_semester(String semester) {
-        if (semesterList.contains(semester)) {
-            return false;
+    //Update a student
+    public String update_student(String Id, String name, String birth) {
+        for (Student stu: studentsLists) {
+            if (stu.getStudentId().equals(Id)) {
+                stu.setStudentName(name);
+                stu.setBirthdate(birth);
+                System.out.println(stu);
+                return "Change successfully";
+            }
+            else {
+                return "Can not find this student ID";
+            }
         }
-        semesterList.add(semester);
-        ArrayList<Course> courseLists = new ArrayList<>();
-        courseListInSem.put(semester, courseLists);
-        return true;
+        return "Can find this student";
     }
 
+
+    //add course in the semester
+    public boolean addCourseinSem(String semester, Course course) {
+        ArrayList<Course> list = new ArrayList<>();
+        if (list.contains(course) && courseListInSem.containsKey(semester)) {
+            System.out.println("The course is already in the semester");
+            return false;
+        }
+        else {
+            list.add(course);
+            courseListInSem.put(semester, list);
+            System.out.println(courseListInSem);
+            System.out.println("Add new course in new semester");
+            return true;
+        }
+    }
 
     //Enrolment + update system
     public String enrolments(String studentId, String courseId, String semester) {
