@@ -19,7 +19,7 @@ public class Menu {
             System.out.println(" Please enter your choice: ");
             System.out.println("1 Add a student ");
             System.out.println("2 Add a course");
-            System.out.println("3 Enrol");
+            System.out.println("3 Enroll");
             System.out.println("4 Print all course in a semester ");
             System.out.println("5 Print all students in one course in semester ");
             System.out.println("6 Print all courses that student enrol in semester");
@@ -120,7 +120,7 @@ public class Menu {
                 }
             }
 
-            //Print all course that student enrol in a semester
+            //Print all course that student enroll in a semester
             else if (line.equals("6")) {
                 System.out.println("Please enter the student ID: ");
                 String sID = sc.nextLine();
@@ -145,7 +145,7 @@ public class Menu {
                 String cID = sc.nextLine();
                 System.out.println("Please enter the semester: ");
                 String semester = sc.nextLine();
-                System.out.println(se.drop_course(sID, cID,semester));
+                System.out.println(se.drop_course(sID,cID,semester));
                 System.out.println("Exit: Y/N?");
                 String line2 = sc.nextLine();
                 if(line2.equals("N")){
